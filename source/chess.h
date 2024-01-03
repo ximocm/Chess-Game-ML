@@ -25,7 +25,7 @@ struct Move{
     Square to;
     Piece piece;
 };
-
+typedef list<Move> Moves;
 
 class Board{
     public:
@@ -35,8 +35,16 @@ class Board{
         bool isLegal(Move mv);
         void makeMove(Move mv);
         Piece getPiece(Square sq);
+        bool gameOver();
+        Square getKing(Color clr);
+        Moves getMoves(Color clr);
+        void changeTurn();
+        bool playerMove(Piece p);
+        Color getCurrent();
+
 
     private:
+        Color current = White;
         Piece board[BOARD_SIZE][BOARD_SIZE];
         bool isLegalPawn(Move mv);
         bool isLegalRook(Move mv);
